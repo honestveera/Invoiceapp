@@ -1,0 +1,13 @@
+<%= form_for Yearcreation.new do |f| %>
+<div class="row">
+  <div class="col-sm-3">
+  <div class="form-group">
+    <%= f.label :year %><br>
+    <%= f.text_field :year,:class=>"required" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+  </div>
+  </div>
+<% end %>

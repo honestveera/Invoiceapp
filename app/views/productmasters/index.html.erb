@@ -1,0 +1,39 @@
+<div class="jumbotron">
+<div><%= render 'form' %></div>
+<div class="row">
+<div class="col-md-6">
+<h3 class="text-success">ProductmastersDetails</h3>
+</div>
+<div class="col-sm-6">
+  <%=search_form_for @search,:class=>"navbar-form navbar-right" do |f| %>
+      <%= f.text_field :productname_or_productamt_cont,:class=>"form-control",:placeholder=>"Search" %>
+      <%= f.submit "Search",:class=>"btn btn-primary"%>
+  <% end %>
+</div>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-hover sortable">
+  <thead class="bg-success">
+    <tr>
+      <th class="text-info">Productname</th>
+      <th class="text-info">Productqty</th>
+      <th class="text-info">Productamt</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productmasters.each do |productmaster| %>
+      <tr>
+        <td><%= productmaster.productname %></td>
+        <td><%= productmaster.productqty %></td>
+        <td><%= productmaster.productamt %></td>
+        <td><%= link_to 'SHOW',productmaster,:class=>"btn btn-primary btn-sm"%></td>
+        <td><%= link_to 'EDIT',edit_pm_path(productmaster),:class=>"btn btn-info btn-sm"%></td>
+        <td><%= link_to 'DESTROY',productmaster,method: :delete,:class=>"btn btn-danger btn-sm",data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,43 @@
+
+<%= form_for Productmaster.new do |f| %>
+<% if Productmaster.new.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(Productmaster.new.errors.count, "error") %> prohibited this samplecreation from being saved:</h2>
+
+    <ul>
+    <%Productmaster.new.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="form-group">
+    <%= f.label :productname,"Product Name" %><br>
+    <%= f.text_field :productname,:class=>"form-control"%>
+  </div>
+  <div class="form-group">
+  <%= f.label :productqty,"Product Qty" %><br>
+  <%= f.text_field :productqty,:class=>"form-control"%>
+</div>
+<div class="form-group">
+<%= f.label :productamt,"Product Amount"%><br>
+<%= f.text_field :productamt,:class=>"form-control"%>
+</div>
+<div class="form-group">
+  <%= f.hidden_field :companyname,:class=>"required",:value => session[:companyname]%>
+</div>
+<div class="form-group">
+
+  <%= f.hidden_field :username,:class=>"required",:value => session[:username]%>
+</div>
+<div class="form-group">
+  <%= f.hidden_field :year,:class=>"required",:value => session[:year]%>
+</div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+</div>
+</div>
+<% end %>

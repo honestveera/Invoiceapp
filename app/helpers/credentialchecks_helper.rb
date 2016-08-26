@@ -1,0 +1,2 @@
+module CredentialchecksHelper
+end

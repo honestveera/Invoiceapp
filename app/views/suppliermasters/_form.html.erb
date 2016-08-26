@@ -1,0 +1,63 @@
+<div class="jumbotron">
+
+<%= form_for Suppliermaster.new do |f|%>
+<% if Suppliermaster.new.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(Suppliermaster.new.errors.count, "error") %> prohibited this samplecreation from being saved:</h2>
+
+    <ul>
+    <%Suppliermaster.new.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-sm-3">
+  <div class="form-group ">
+    <%= f.label :suppliername,"SupplierName",:class=>"text-primary" %>
+    <%= f.text_field :suppliername,:class=>"form-control",:placeholder=>"SupplierName"%>
+  </div>
+  <div class="form-group ">
+    <%= f.label :supplieraddress,"SupplierAddress",:class=>"text-primary" %>
+    <%= f.text_field :supplieraddress,:class=>"form-control",:placeholder=>"SupplierAddress"%>
+  </div>
+  <div class="form-group ">
+    <%= f.label :supplierfax,"supplierfax",:class=>"text-primary"%>
+    <%= f.text_field :supplierfax,:class=>"form-control",:placeholder=>"SupplierFax"%>
+  </div>
+    <div class="form-group">
+    <%= f.label :supplierphone,"SupplierPhone",:class=>"text-primary"%>
+    <%= f.text_field :supplierphone,:class=>"form-control",:placeholder=>"SupplierPhone"%>
+  </div>
+</div>
+  <div class="col-sm-3">
+  <div class="form-group">
+    <%= f.label :supplieremail,"SupplierEmail",:class=>"text-primary"%>
+    <%= f.text_field :supplieremail,:class=>"form-control",:placeholder=>"SupplierEmail"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :suppliertin,"supplierTIN",:class=>"text-primary"%>
+    <%= f.number_field :suppliertin,:class=>"form-control",:placeholder=>"supplierTIN"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :suppliercst,"supplierCST",:class=>"text-primary"%>
+    <%= f.number_field :suppliercst,:class=>"form-control",:placeholder=>"supplierCST"%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :companyname,:class=>"required",:value => session[:companyname]%>
+  </div>
+  <div class="form-group">
+
+    <%= f.hidden_field :username,:class=>"required",:value => session[:username]%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :year,:class=>"required",:value => session[:year]%>
+  </div>
+<%= f.submit class: 'btn btn-primary'%>
+</div>
+
+</div>
+<% end %>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="jumbotron">
+<%= form_for @customermaster  do |f|%>
+<div class="row">
+  <div class="col-sm-3">
+  <div class="form-group ">
+    <%= f.label :customername,"CustomerName",:class=>"text-primary" %>
+    <%= f.text_field :customername,:class=>"form-control",:placeholder=>"CustomerName",:required => true%>
+  </div>
+  <div class="form-group ">
+    <%= f.label :customeraddress,"CustomerAddress",:class=>"text-primary" %>
+    <%= f.text_field :customeraddress,:class=>"form-control",:placeholder=>"CustomerAddress",:required => true%>
+  </div>
+  <div class="form-group ">
+    <%= f.label :customerfax,"CustomerFax",:class=>"text-primary"%>
+    <%= f.text_field :customerfax,:class=>"form-control",:placeholder=>"CustomerFax",:required => true%>
+  </div>
+    <div class="form-group">
+    <%= f.label :customerphone,"CustomerPhone",:class=>"text-primary"%>
+    <%= f.text_field :customerphone,:class=>"form-control",:placeholder=>"CustomerPhone",:required => true%>
+  </div>
+</div>
+  <div class="col-sm-3">
+  <div class="form-group">
+    <%= f.label :customeremail,"CustomerEmail",:class=>"text-primary"%>
+    <%= f.text_field :customeremail,:class=>"form-control",:placeholder=>"CustomerEmail",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :customertin,"CustomerTIN",:class=>"text-primary"%>
+    <%= f.number_field :customertin,:class=>"form-control",:placeholder=>"CustomerTIN",:pattern=> "[0-9]",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :customercst,"CustomerCST",:class=>"text-primary"%>
+    <%= f.number_field :customercst,:class=>"form-control",:placeholder=>"CustomerCST",:pattern=> "[0-9]",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :companyname,:class=>"required"%>
+  </div>
+  <div class="form-group">
+
+    <%= f.hidden_field :username,:class=>"required"%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :year,:class=>"required"%>
+  </div>
+    <%= f.submit class: 'btn btn-primary'%>
+
+</div>
+</div>
+<% end %>
+</div>

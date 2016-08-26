@@ -1,0 +1,34 @@
+<%= form_for @productmaster do |f| %>
+
+<div class="row">
+
+  <div class="col-sm-3">
+    <div class="form-group">
+    <%= f.label :productname,"Product Name" %><br>
+    <%= f.text_field :productname,:class=>"form-control"%>
+  </div>
+  <div class="form-group">
+  <%= f.label :productqty,"Product Qty" %><br>
+  <%= f.text_field :productqty,:class=>"form-control"%>
+</div>
+<div class="form-group">
+<%= f.label :productamt,"Product Amount"%><br>
+<%= f.text_field :productamt,:class=>"form-control"%>
+</div>
+<div class="form-group">
+  <%= f.hidden_field :companyname,:class=>"required"%>
+</div>
+<div class="form-group">
+
+  <%= f.hidden_field :username,:class=>"required"%>
+</div>
+<div class="form-group">
+  <%= f.hidden_field :year,:class=>"required"%>
+</div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+</div>
+</div>
+<% end %>

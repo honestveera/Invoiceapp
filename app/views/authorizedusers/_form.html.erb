@@ -1,0 +1,34 @@
+<%= form_for Authorizeduser.new do |f| %>
+<% if  Authorizeduser.new.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize( Authorizeduser.new.errors.count, "error") %> prohibited this samplecreation from being saved:</h2>
+
+    <ul>
+    <%  Authorizeduser.new.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row ">
+  <div class="form-group">
+    <%=f.label :companyname %><br>
+    <%=f.select :companyname,options_from_collection_for_select(Companycreation.all,"companyname","companyname"), :prompt => "--Select Companyname--" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :usertype %><br>
+  <%=f.select :usertype, options_from_collection_for_select(Usercreation.all,"usertype","usertype"), :prompt => "--Select UserType--" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :username %><br>
+    <%= f.text_field :username,:class => "required",:required => true%>
+  </div>
+  <div class="form-group">
+    <%= f.label :year %><br>
+    <%= f.select:year, options_from_collection_for_select(Yearcreation.all,"year","year"), :prompt => "--Select User--" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+</div>
+<% end %>

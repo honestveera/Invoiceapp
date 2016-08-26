@@ -1,0 +1,99 @@
+  [1m[36m (141.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (98.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateInvoicingTaxRates (20160518064802)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /home/honestraj/Rubyprojects/invoice/db/migrate/20160518064802_create_invoicing_tax_rates.rb:11)
+  [1m[35m (0.4ms)[0m  CREATE TABLE "invoicing_tax_rates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "rate" decimal(20,4), "valid_from" datetime NOT NULL, "valid_until" datetime, "replaced_by_id" integer, "is_default" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160518064802"]]
+  [1m[35m (119.0ms)[0m  commit transaction
+Migrating to CreateInvoicingLedgerItems (20160518064803)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /home/honestraj/Rubyprojects/invoice/db/migrate/20160518064803_create_invoicing_ledger_items.rb:22)
+  [1m[35m (0.6ms)[0m  CREATE TABLE "invoicing_ledger_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "recipient_id" integer, "type" varchar, "issue_date" datetime, "currency" varchar(3) NOT NULL, "total_amount" decimal(20,4), "tax_amount" decimal(20,4), "status" varchar(20), "identifier" varchar(50), "description" varchar, "period_start" datetime, "period_end" datetime, "uuid" varchar(40), "due_date" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160518064803"]]
+  [1m[35m (153.3ms)[0m  commit transaction
+Migrating to CreateInvoicingLineItems (20160518064804)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /home/honestraj/Rubyprojects/invoice/db/migrate/20160518064804_create_invoicing_line_items.rb:17)
+  [1m[35m (0.6ms)[0m  CREATE TABLE "invoicing_line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ledger_item_id" integer, "type" varchar, "net_amount" decimal(20,4), "tax_amount" decimal(20,4), "description" varchar, "uuid" varchar(40), "tax_point" datetime, "quantity" decimal(20,4), "creator_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160518064804"]]
+  [1m[35m (152.4ms)[0m  commit transaction
+Migrating to CreateCustomermasters (20160518071754)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "customermasters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "customername" varchar, "customeraddress" varchar, "customerfax" varchar, "customerphone" varchar, "customeremail" varchar, "customertin" integer, "customercst" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160518071754"]]
+  [1m[35m (146.2ms)[0m  commit transaction
+Migrating to CreateSuppliermasters (20160519050520)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "suppliermasters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "suppliername" varchar, "supplieraddress" varchar, "supplierfax" varchar, "supplierphone" varchar, "supplieremail" varchar, "suppliertin" integer, "suppliercst" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160519050520"]]
+  [1m[35m (102.6ms)[0m  commit transaction
+Migrating to CreateUsercreations (20160519062322)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "usercreations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "usertype" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160519062322"]]
+  [1m[35m (112.7ms)[0m  commit transaction
+Migrating to CreateCompanycreations (20160519062357)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "companycreations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "companyname" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160519062357"]]
+  [1m[35m (128.5ms)[0m  commit transaction
+Migrating to CreateYearcreations (20160519062436)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "yearcreations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160519062436"]]
+  [1m[35m (103.2ms)[0m  commit transaction
+Migrating to CreateSamplecreations (20160519091952)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "samplecreations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "sample" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160519091952"]]
+  [1m[35m (113.3ms)[0m  commit transaction
+Migrating to CreateProductmasters (20160520050148)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "productmasters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "productname" varchar, "productqty" varchar, "productamt" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160520050148"]]
+  [1m[35m (136.2ms)[0m  commit transaction
+Migrating to CreateAuthorizedusers (20160520100502)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "authorizedusers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "companyname" varchar, "usertype" varchar, "username" varchar, "year" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160520100502"]]
+  [1m[35m (129.2ms)[0m  commit transaction
+Migrating to AddDetailsToCustomermasters (20160607053729)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "customermasters" ADD "companyname" varchar
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "customermasters" ADD "username" varchar[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "customermasters" ADD "year" varchar
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160607053729"]]
+  [1m[35m (127.9ms)[0m  commit transaction
+Migrating to AddDetailsToSuppliermasters (20160607053805)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "suppliermasters" ADD "companyname" varchar
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "suppliermasters" ADD "username" varchar[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "suppliermasters" ADD "year" varchar
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160607053805"]]
+  [1m[35m (135.3ms)[0m  commit transaction
+Migrating to AddDetailsToProductmasters (20160607053825)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "productmasters" ADD "companyname" varchar
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "productmasters" ADD "username" varchar[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "productmasters" ADD "year" varchar
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160607053825"]]
+  [1m[35m (144.1ms)[0m  commit transaction
+Migrating to CreateSkillsets (20160719073354)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "skillsets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "skills" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719073354"]]
+  [1m[35m (169.6ms)[0m  commit transaction
+Migrating to CreateCalenders (20160719074221)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "calenders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "dates" date, "times" time, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719074221"]]
+  [1m[35m (136.9ms)[0m  commit transaction
+Migrating to CreateScheduletimes (20160719074339)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "scheduletimes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scheduletime" time, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160719074339"]]
+  [1m[35m (136.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m

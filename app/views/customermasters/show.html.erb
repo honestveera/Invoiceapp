@@ -1,0 +1,41 @@
+
+<div class="jumbotron">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customername:</strong>
+  <%= @customermaster.customername %>
+</p>
+
+<p>
+  <strong>Customeraddress:</strong>
+  <%= @customermaster.customeraddress %>
+</p>
+
+<p>
+  <strong>Customerfax:</strong>
+  <%= @customermaster.customerfax %>
+</p>
+
+<p>
+  <strong>Customerphone:</strong>
+  <%= @customermaster.customerphone %>
+</p>
+
+<p>
+  <strong>Customeremail:</strong>
+  <%= @customermaster.customeremail %>
+</p>
+
+<p>
+  <strong>Customertin:</strong>
+  <%= @customermaster.customertin %>
+</p>
+
+<p>
+  <strong>Customercst:</strong>
+  <%= @customermaster.customercst %>
+</p>
+<%= link_to "PDF Customermaster",customermaster_path(@customermaster, :format => 'pdf') %>
+
+</div>

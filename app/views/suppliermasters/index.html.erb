@@ -1,0 +1,49 @@
+
+<%= render 'form' %>
+<div class="jumbotron">
+<div class="row">
+    <div class="col-md-6">
+      <h3 class="text-success">SuppliermastersDetails</h3>
+    </div>
+    <div class="col-sm-6">
+      <%=search_form_for @search,:class=>"navbar-form navbar-right" do |f| %>
+          <%= f.text_field :suppliername_or_supplieremail_cont,:class=>"form-control",:placeholder=>"Search" %>
+          <%= f.submit "Search",:class=>"btn btn-primary"%>
+      <% end %>
+    </div>
+
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-hover">
+  <thead class="bg-success">
+    <tr>
+      <th class="text-info">SupplierName</th>
+      <th class="text-info">SupplierAddress</th>
+      <th class="text-info">SupplierFax</th>
+      <th class="text-info">SupplierPhone</th>
+      <th class="text-info">SupplierEmail</th>
+      <th class="text-info">SupplierTIN</th>
+      <th class="text-info">SupplierCST</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suppliermasters.each do |suppliermaster| %>
+      <tr>
+        <td><%= suppliermaster.suppliername %></td>
+        <td><%= suppliermaster.supplieraddress %></td>
+        <td><%= suppliermaster.supplierfax %></td>
+        <td><%= suppliermaster.supplierphone %></td>
+        <td><%= suppliermaster.supplieremail %></td>
+        <td><%= suppliermaster.suppliertin %></td>
+        <td><%= suppliermaster.suppliercst %></td>
+        <td><%= link_to 'SHOW', suppliermaster,:class=>"btn btn-primary btn-sm"%></td>
+        <td><%= link_to 'EDIT', edit_suppliermaster_path(suppliermaster),:class=>"btn btn-info btn-sm"%></td>
+        <td><%= link_to 'DESTROY', suppliermaster, method: :delete,:class=>"btn btn-danger btn-sm",data: { confirm: 'Are you sure?'+"  "+suppliermaster.suppliername } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>

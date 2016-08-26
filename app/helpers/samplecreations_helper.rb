@@ -1,0 +1,2 @@
+module SamplecreationsHelper
+end

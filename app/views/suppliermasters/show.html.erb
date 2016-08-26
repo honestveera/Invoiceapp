@@ -1,0 +1,39 @@
+<div class="jumbotron">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Suppliername:</strong>
+  <%= @suppliermaster.suppliername %>
+</p>
+
+<p>
+  <strong>Supplieraddress:</strong>
+  <%= @suppliermaster.supplieraddress %>
+</p>
+
+<p>
+  <strong>Supplierfax:</strong>
+  <%= @suppliermaster.supplierfax %>
+</p>
+
+<p>
+  <strong>Supplierphone:</strong>
+  <%= @suppliermaster.supplierphone %>
+</p>
+
+<p>
+  <strong>Supplieremail:</strong>
+  <%= @suppliermaster.supplieremail %>
+</p>
+
+<p>
+  <strong>Suppliertin:</strong>
+  <%= @suppliermaster.suppliertin %>
+</p>
+
+<p>
+  <strong>Suppliercst:</strong>
+  <%= @suppliermaster.suppliercst %>
+</p>
+<%= link_to "PDF Suppliermaster", suppliermaster_path(@suppliermaster, :format => 'pdf') %>
+</div>

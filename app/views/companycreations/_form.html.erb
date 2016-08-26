@@ -1,0 +1,25 @@
+
+<%= form_for(Companycreation.new,:html => { :id => "form"}) do |f| %>
+<% if  Companycreation.new.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize( Companycreation.new.errors.count, "error") %> prohibited this samplecreation from being saved:</h2>
+
+    <ul>
+    <%  Companycreation.new.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="form-group">
+    <%= f.label :companyname %><br>
+    <%= f.text_field :companyname,:class => "required",:required=>true%>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-primary'%>
+  </div>
+</div>
+</div>
+<% end %>

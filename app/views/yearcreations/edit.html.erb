@@ -1,0 +1,24 @@
+<div class="jumbotron">
+<h3 class="text-primary">Yearcreation</h3>  
+<%= render 'form1' %>
+<h3 class="text-success">YearcreationDetails</h3>
+<table class="table table-bordered table-hover sortable">
+  <thead class="bg-success">
+    <tr>
+      <th class="text-info">Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @yearcreations.each do |yearcreation| %>
+      <tr>
+        <td><%= yearcreation.year %></td>
+        <td><%= link_to 'SHOW', yearcreation,:class=>"btn btn-primary btn-sm"%></td>
+        <td><%= link_to 'EDIT', edit_yearcreation_path(yearcreation),:class=>"btn btn-info btn-sm"%></td>
+        <td><%= link_to 'DESTROY', yearcreation, method: :delete,:class=>"btn btn-danger btn-sm",data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

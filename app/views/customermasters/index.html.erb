@@ -1,0 +1,52 @@
+
+<%= render 'form' %>
+<div class="jumbotron">
+  <div class="row">
+  <div class="col-md-6">
+  <h3 class="text-success">CustomermasterDetails</h3>
+  </div>
+  <div class="col-sm-6">
+    <%=search_form_for @search,:class=>"navbar-form navbar-right" do |f| %>
+        <%= f.text_field :customername_or_customeremail_cont,:class=>"form-control",:placeholder=>"Search" %>
+        <%= f.submit "Search",:class=>"btn btn-primary"%>
+    <% end %>
+  </div>
+  </div>
+
+<div class="table-responsive">
+<table  class="table table-bordered table-hover" style="margin-left:-20px">
+  <thead class="bg-success">
+    <tr>
+      <th class="text-info">CustomerName</th>
+      <th class="text-info">CustomerAddress</th>
+      <th class="text-info">CustomerFax</th>
+      <th class="text-info">CustomerPhone</th>
+      <th class="text-info">CustomerEmail</th>
+      <th class="text-info">CustomerTIN</th>
+      <th class="text-info">CustomerCST</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customermasters.each do |customermaster| %>
+      <tr>
+        <td><%= customermaster.customername %></td>
+        <td><%= customermaster.customeraddress %></td>
+        <td><%= customermaster.customerfax %></td>
+        <td><%= customermaster.customerphone %></td>
+        <td><%= customermaster.customeremail %></td>
+        <td><%= customermaster.customertin %></td>
+        <td><%= customermaster.customercst %></td>
+        <td><%= link_to 'SHOW', customermaster,:class=>"btn btn-primary btn-sm"%></td>
+        <td><%= link_to 'EDIT', edit_customermaster_path(customermaster),:class=>"btn btn-info btn-sm"%></td>
+        <td><%= link_to 'DESTROY', customermaster, method: :delete,:class=>"btn btn-danger btn-sm",data: { confirm: 'Are you sure?'+"  "+customermaster.customername } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+</div>
+
+</div>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Companyname:</strong>
+  <%= @authorizeduser.companyname %>
+</p>
+
+<p>
+  <strong>Usertype:</strong>
+  <%= @authorizeduser.usertype %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @authorizeduser.username %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @authorizeduser.year %>
+</p>
+
+<%= link_to 'Edit', edit_authorizeduser_path(@authorizeduser) %> |
+<%= link_to 'Back', authorizedusers_path %>

@@ -1,0 +1,65 @@
+
+<div class="jumbotron">
+
+<%= form_for(Customermaster.new)  do |f|%>
+<% if  Customermaster.new.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize( Customermaster.new.errors.count, "error") %> prohibited this samplecreation from being saved:</h2>
+
+    <ul>
+    <%Customermaster.new.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-sm-3">
+  <div class="form-group ">
+    <%= f.label :customername,"CustomerName",:for=>"inputName",:class=>"control-label text-primary" %>
+    <%= f.text_field :customername,:class=>"required",:placeholder=>"CustomerName",:required => true%>
+  </div>
+  <div class="form-group ">
+    <%= f.label :customeraddress,"CustomerAddress",:class=>"text-primary" %>
+    <%= f.text_field :customeraddress,:class=>"required ",:placeholder=>"CustomerAddress",:required => true%>
+  </div>
+  <div class="form-group ">
+    <%= f.label :customerfax,"CustomerFax",:class=>"text-primary"%>
+    <%= f.text_field :customerfax,:class=>"required",:placeholder=>"CustomerFax",:required => true%>
+  </div>
+    <div class="form-group">
+    <%= f.label :customerphone,"CustomerPhone",:class=>"text-primary"%>
+    <%= f.text_field :customerphone,:class=>"required",:placeholder=>"CustomerPhone",:required => true,:maxlength=>10%>
+  </div>
+</div>
+  <div class="col-sm-3">
+  <div class="form-group">
+    <%= f.label :customeremail,"CustomerEmail",:class=>"text-primary"%>
+    <%= f.email_field :customeremail,:class=>"required",:placeholder=>"CustomerEmail",:required => true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :customertin,"CustomerTIN",:class=>"text-primary"%>
+    <%= f.number_field :customertin,:class=>"required",:placeholder=>"CustomerTIN",:pattern=> "[0-9]",:required => true,:maxlength=>4%>
+  </div>
+  <div class="form-group">
+    <%= f.label :customercst,"CustomerCST",:class=>"text-primary"%>
+    <%= f.number_field :customercst,:class=>"required",:placeholder=>"CustomerCST",:pattern=> "[0-9]",:required => true,:maxlength=>4%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :companyname,:class=>"required",:value => session[:companyname]%>
+  </div>
+  <div class="form-group">
+
+    <%= f.hidden_field :username,:class=>"required",:value => session[:username]%>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :year,:class=>"required",:value => session[:year]%>
+  </div>
+<%= f.submit class: 'btn btn-primary'%>
+
+</div>
+
+</div>
+<% end %>
+
+</div>
